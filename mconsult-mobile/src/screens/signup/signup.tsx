@@ -51,7 +51,7 @@ const Signup = (): React.JSX.Element => {
             secureTextEntry={true}
           />
         </View>
-        <Button text="Criar Conta" outline={false} />
+        <Button text="Criar Conta" outline={false} theme="primary"/>
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Já tenho conta. </Text>

@@ -19,7 +19,7 @@ const Login = (): React.JSX.Element => {
         <View style={styles.containerInput}>
           <TextInput placeholder="Senha" style={styles.input} secureTextEntry={true} />
         </View>
-        <Button text="Acessar" outline={false} />
+        <Button text="Acessar" outline={false} theme="primary" />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Não tenho conta. </Text>
