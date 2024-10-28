@@ -2,9 +2,32 @@ import React from "react";
 import { Button, Text, TouchableOpacity } from "react-native";
 import styles from './button.style'
 
-const button = function(props: { text: string; outline: boolean }): React.JSX.Element{
-    return <TouchableOpacity style={props.outline? styles.btn_out_primary:styles.btn_primary}>
-        <Text style={props.outline? styles.text_out_primary:styles.text_primary}>
+const button = function(props: { text: string; outline: boolean, theme: string }): React.JSX.Element{
+    const stylesBackgroundList = []
+    const stylesTextList = []
+    stylesBackgroundList.push(styles.btn)
+    stylesTextList.push(styles.text)
+    if (props.theme == "primary") {
+        if(props.outline){
+            stylesBackgroundList.push(styles.out_primary)
+            stylesTextList.push(styles.text_out_primary)
+        }
+        else{
+            stylesBackgroundList.push(styles.primary)
+        }
+    }
+    else {
+        if(props.outline){
+            stylesBackgroundList.push(styles.out_danger)
+            stylesTextList.push(styles.text_out_danger)
+        }
+        else{
+            stylesBackgroundList.push(styles.danger)
+        }
+
+    }
+    return <TouchableOpacity style={stylesBackgroundList}>
+        <Text style={stylesTextList}>
             {props.text}
         </Text>
     </TouchableOpacity>
