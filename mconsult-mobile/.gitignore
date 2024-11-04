@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+src/assets/**:Zone.Identifier
 
 # Expo
 .expo/
