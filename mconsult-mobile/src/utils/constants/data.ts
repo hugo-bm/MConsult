@@ -68,4 +68,10 @@ const medical_services = [
 
 ]
 
-export {doctors, appointments, medical_services}
+const opening_hours = [
+    "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+    , "13:00", "13:30", "14:00", "14:30",
+    "15:00", "15:30", "16:00"
+  ]
+
+export {doctors, appointments, medical_services, opening_hours}
