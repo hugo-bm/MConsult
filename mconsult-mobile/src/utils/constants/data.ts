@@ -46,4 +46,26 @@ const appointments = [
     }
 ]
 
-export {doctors, appointments}
+const medical_services = [
+    {
+        id_service: 1,
+        service: "Rhinoplastia",
+        desc: "É uma cirurgia de pequeno porte que remodela a estrutura nasal, tanto óssea quanto a parte cartilaginosa, procurada por grande parte da população para melhorar a estrutura do nariz e a para as pessoas que possuem dificuldade para quanto a respiração. Mesmo sendo de pequeno porte se faz necessário o uso de centro cirúrgico e anestesia.",
+        price: 3200,
+    },
+    {
+        id_service: 2,
+        service: "Lipoaspiração",
+        desc: "É uma cirurgia plástica que remove o excesso de gordura localizada em determinadas áreas do corpo, como o abdômen, as coxas, os braços e as costas.",
+        price: 520,
+    },
+    {
+        id_service: 3,
+        service: "Mamoplastia",
+        desc: "É um procedimento cirúrgico que altera o formato, o tamanho ou a aparência das mamas. É uma das cirurgias plásticas mais realizadas no mundo e no Brasil. \nA mamoplastia pode ser realizada por motivos estéticos ou médicos, com o objetivo de:\nMelhorar a autoestima e a qualidade de vida \nTornar as mamas mais harmoniosas e proporcionais ao restante do corpo \nReconstruir a mama após a mastectomia ou lesão",
+        price: 520,
+    },
+
+]
+
+export {doctors, appointments, medical_services}
