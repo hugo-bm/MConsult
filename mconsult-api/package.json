@@ -4,19 +4,25 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start:dev": "tsx ./src/start/server.ts",
-    "start:inspect": "tsx --inspect-brk ./src/start/server.ts",
-    "start:watch": "tsx watch ./src/start/server.ts",
+    "start:dev": "tsx ./src/app.ts",
+    "start:inspect": "tsx --inspect-brk ./src/app.ts",
+    "start:watch": "tsx watch ./src/app.ts",
     "lint:fix": "eslint --fix --ext .js,.mjs,.ts,.json .",
-    "test": "jest"
+    "test": "jest",
+    "docs": "ts-node src/services/swagger.ts"
   },
   "keywords": [],
   "author": "Hugo Batalha Moreno",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.8.6",
+    "@types/swagger-ui-express": "^4.1.7",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^9.13.0",
@@ -30,5 +36,19 @@
     "ts-jest": "^29.2.5",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.21.1",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.21.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "uuid": "^11.0.2"
   }
 }
