@@ -1,0 +1,41 @@
+export enum HttpStatusCode {
+    OK = 200,
+    Created = 201,
+    Accepted = 202,
+    NoContent = 204,
+    MovedPermanently = 301,
+    Found = 302,
+    NotModified = 304,
+    BadRequest = 400,
+    Unauthorized = 401,
+    Forbidden = 403,
+    NotFound = 404,
+    MethodNotAllowed = 405,
+    Conflict = 409,
+    InternalServerError = 500,
+    NotImplemented = 501,
+    BadGateway = 502,
+    ServiceUnavailable = 503,
+    GatewayTimeout = 504
+  }
+  
+  export const HttpStatusMessages: Record<HttpStatusCode, string> = {
+    [HttpStatusCode.OK]: "OK - The request has succeeded.",
+    [HttpStatusCode.Created]: "Created - The request has succeeded and a new resource has been created.",
+    [HttpStatusCode.Accepted]: "Accepted - The request has been accepted for processing, but it has not been completed.",
+    [HttpStatusCode.NoContent]: "No Content - The server successfully processed the request and is not returning any content.",
+    [HttpStatusCode.MovedPermanently]: "Moved Permanently - The resource has been moved to a different URI permanently.",
+    [HttpStatusCode.Found]: "Found - The resource has been found and temporarily resides under a different URI.",
+    [HttpStatusCode.NotModified]: "Not Modified - The resource has not been modified since the version specified.",
+    [HttpStatusCode.BadRequest]: "Bad Request - The server could not understand the request due to invalid syntax.",
+    [HttpStatusCode.Unauthorized]: "Unauthorized - The client must authenticate itself to get the requested response.",
+    [HttpStatusCode.Forbidden]: "Forbidden - The client does not have access rights to the content.",
+    [HttpStatusCode.NotFound]: "Not Found - The server can not find the requested resource.",
+    [HttpStatusCode.MethodNotAllowed]: "Method Not Allowed - The request method is not supported for the requested resource.",
+    [HttpStatusCode.Conflict]: "Conflict - The request conflicts with the current state of the server.",
+    [HttpStatusCode.InternalServerError]: "Internal Server Error - The server encountered an internal error and was unable to complete the request.",
+    [HttpStatusCode.NotImplemented]: "Not Implemented - The server does not support the functionality required to fulfill the request.",
+    [HttpStatusCode.BadGateway]: "Bad Gateway - The server, while acting as a gateway, received an invalid response from the upstream server.",
+    [HttpStatusCode.ServiceUnavailable]: "Service Unavailable - The server is not ready to handle the request.",
+    [HttpStatusCode.GatewayTimeout]: "Gateway Timeout - The server, while acting as a gateway, did not receive a timely response from the upstream server."
+  };
