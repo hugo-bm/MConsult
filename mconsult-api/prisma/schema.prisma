@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id_user    String   @id @default(uuid())
+  name       String?
+  email      String   @unique
+  celPhone   String   @unique @db.VarChar(16)
+  birth_date DateTime
+  createAt   DateTime @default(now())
+  upadteAt   DateTime @updatedAt
+  password   String
+}
+
+model Employee {
+  id_employee String   @id @default(uuid())
+  name        String?
+  email       String   @unique
+  user_name   String   @unique @db.VarChar(50)
+  celPhone    String   @unique @db.VarChar(16)
+  role        String   @default("EMP") // acepted values "EMP","ADM", "MNG", "VWE" => apenas vizualizar 
+  createAt    DateTime @default(now())
+  upadteAt    DateTime @updatedAt
+  password    String
+}
+
+model Doctor {
+  id_doctor String @id @default(uuid())
+  name      String
+  user_name String @unique @db.VarChar(50)
+  specialty String
+  icon      String @db.Char(1)
+  password  String
+
+  Doctor_Service Doctor_Service[]
+}
+
+model Service {
+  id_service Int    @id @default(autoincrement())
+  service    String
+  desc       String
+}
+
+model Doctor_Service {
+  id_doctor_service Int     @id @default(autoincrement())
+  id_doctor         String
+  id_service        Int
+  price             Decimal
+  doctor            Doctor  @relation(fields: [id_doctor], references: [id_doctor])
+}
+
+model Appointment {
+  id_appointment Int      @id @default(autoincrement())
+  id_doctor      String
+  id_service     Int
+  id_user        String
+  booking_date   DateTime
+}
