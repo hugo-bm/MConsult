@@ -14,20 +14,20 @@ export default class PrismaDoctorServiceRepository
   }
 
   async findOne(id_doctor_service: number): Promise<DoctorService | null> {
-    // const resp = await this.prisma.doctor_Service.findFirst({where:{
-    //     id_doctor_service: doctor_service_id
-    // }});
-    // if (resp) {
-    //     const doctor = await this.prisma.doctor.findUnique({where:{
-    //         id_doctor: resp?.id_doctor
-    //     }});
-    //     if (doctor) {
-    //         return {...resp, doctor: doctor}
-    //     }
-    // }
-
-    // return null;
-    throw new Error('Method not implemented.');
+    const resp = await this.prisma.doctor_Service.findFirst({
+      where: {
+        id_doctor_service: id_doctor_service,
+      },
+    });
+    if (resp) {
+      return new DoctorService(
+        resp.id_doctor_service,
+        resp.id_doctor,
+        resp.id_service,
+        resp.price.toNumber(),
+      );
+    }
+    return null;
   }
   async addDoctorService(
     service_id: number,
