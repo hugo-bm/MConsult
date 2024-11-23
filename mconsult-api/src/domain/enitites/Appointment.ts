@@ -1,3 +1,4 @@
+import { dateToDateHour } from "../shared/dateTools";
 
 export class Appointment {
 
