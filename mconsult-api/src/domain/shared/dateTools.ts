@@ -1,4 +1,4 @@
-function dateHourToDate(date: string, time: string): Date | null {
+export function dateHourToDate(date: string, time: string): Date | null {
   if (isValidDate(date) && isValidTime(time)) {
     const [year, month, day] = date.split('-').map(Number);
     const [hour, minute] = time.split(':').map(Number);
@@ -8,7 +8,7 @@ function dateHourToDate(date: string, time: string): Date | null {
     return null;
   }
 }
-function dateToDateHour(date: Date): { date: string; time: string } {
+export function dateToDateHour(date: Date): { date: string; time: string } {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
@@ -18,13 +18,13 @@ function dateToDateHour(date: Date): { date: string; time: string } {
   return {date: `${year}-${month}-${day}`, time: `${hours}:${minutes}`}
 }
 
-function isValidTime(time: string): boolean {
+export function isValidTime(time: string): boolean {
   // Check that the time is not in the format (hh:mm)
   const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
   return timeRegex.test(time);
 }
 
-function isValidDate(date: string): boolean {
+export function isValidDate(date: string): boolean {
   // Check that the time is not in the format (yyyy-mm-dd)
   const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   if (!dateRegex.test(date)) {
