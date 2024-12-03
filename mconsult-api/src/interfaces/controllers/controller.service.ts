@@ -41,7 +41,7 @@ export async function listAll(_req: Request, res: Response) {
 }
 
 export async function findOne(req: Request, res: Response) {
-  const id: string = req.body.id;
+  const id: string = req.params.id;
   const serviceRepository = new PrismaServiceRepository();
   if (parseInt(id) > 0) {
     try {
