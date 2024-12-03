@@ -54,7 +54,7 @@ export async function listAll(_req: Request, res: Response) {
 }
 
 export async function findOne(req: Request, res: Response) {
-  const id: string = req.body.id;
+  const id: string = req.params.id;
   const doctorRepository = new PrismaDoctorRepository();
   const serviceRepository = new PrismaServiceRepository();
   if (uuid.validate(id)) {
