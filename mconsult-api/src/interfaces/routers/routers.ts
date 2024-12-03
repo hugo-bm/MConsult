@@ -24,27 +24,27 @@ router.put("/employee", employee.updateEmployee);
 router.delete("/employee", employee.deleteEmployee);
 router.get("/employee/list", employee.listAll);
 // Doctor
-router.get("/doctor", doctor.findOne);
+router.get("/doctor/:id", doctor.findOne);
 router.post("/doctor", doctor.createDoctor);
 router.put("/doctor", doctor.updateDoctor);
 router.delete("/doctor", doctor.deleteDoctor);
-router.get("/doctor/list", doctor.listAll);
+router.get("/doctor", doctor.listAll); //retirar o list
 // Doctor Service
 router.post("/doctor/service", doctorService.linkDoctorToService);
 router.put("/doctor/service", doctorService.updateDoctorService);
 router.delete("/doctor/service", doctorService.unlinkDoctorToService);
 // Service
-router.get("/service", service.findOne);
+router.get("/service/:id", service.findOne);
 router.post("/service", service.createService);
 router.put("/service", service.updateService);
 router.delete("/service", service.deleteService);
 router.get("/service/list", service.listAll);
 // Appointment
-router.get("/appointment/availability", appointment.getAvailability);
+router.get("/appointment/availability/:id", appointment.getAvailability);
 router.post("/appointment", appointment.createAppointment);
 router.put("/appointment", appointment.updateAppointment);
 router.delete("/appointment", appointment.deleteAppointmentt);
-router.get("/appointment/user/list", appointment.findAllByUser);
+router.get("/appointment/user/list", AuthMiddleware,appointment.findAllByUser);
 router.get("/appointment/doctor/list", appointment.findAllByDoctor);
 router.get("/appointment/list", appointment.findAll);
 
