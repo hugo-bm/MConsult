@@ -1,12 +1,12 @@
-import { UserRepository } from '../../domain/repositories/UserRepository';
+import { IUserRepository } from '../../domain/repositories/IUserRepository';
 import { IAuthService } from '../../domain/services/IAuthService';
-import { HashService } from '../../domain/services/HashService';
+import { IHashService } from '../../domain/services/IHashService';
 import { Email } from '../../domain/shared/Email';
 
 export class LoginUser {
   constructor(
-    private readonly userRepository: UserRepository,
-    private readonly hashService: HashService,
+    private readonly userRepository: IUserRepository,
+    private readonly hashService: IHashService,
     private readonly authService: IAuthService,
   ) {}
 
