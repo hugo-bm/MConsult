@@ -8,33 +8,35 @@ import {
   UpdateAppointmentRequestBody,
 } from '../shared/requestTypes';
 import { Appointment } from '../../domain/enitites/Appointment';
-import {dateHourToDate, isValidDate} from "../../domain/shared/dateTools"
+import { dateHourToDate, isValidDate } from '../../domain/shared/dateTools';
 
 const serviceDuration = 30;
 
 export async function getAvailability(req: Request, res: Response) {
   let { month, year } = req.query;
-  const { doctorId } = req.body;
+  const doctorId = req.params.id;
   const appointmentRepository = new PrismaAppointmentRepository();
   const getMonthlyAvailability = new GetMonthlyAvailability(
     appointmentRepository,
   );
-  if (uuid.validate(doctorId) && parseInt(month as string) && parseInt(year as string)) {
+  if (
+    uuid.validate(doctorId) &&
+    parseInt(month as string) &&
+    parseInt(year as string)
+  ) {
     try {
       const availability = await getMonthlyAvailability.execute(
-        doctorId as string,
+        doctorId,
         serviceDuration,
         parseInt(month as string),
         parseInt(year as string),
       );
-      if (availability) {
-        res.status(HttpStatusCode.OK).json({
-          status: HttpStatusCode.OK,
-          message: HttpStatusMessages[HttpStatusCode.OK],
-          response_date: new Date().toLocaleString(),
-          date: availability,
-        });
-      }
+      res.status(HttpStatusCode.OK).json({
+        status: HttpStatusCode.OK,
+        message: HttpStatusMessages[HttpStatusCode.OK],
+        response_date: new Date().toLocaleString(),
+        date: availability,
+      });
     } catch (error) {
       console.error({
         message: error,
@@ -58,7 +60,7 @@ export async function getAvailability(req: Request, res: Response) {
 }
 
 export async function findAllByUser(req: Request, res: Response) {
-  const id_user = req.body.id;
+  const id_user = req.userId!;
   const appointmentRepository = new PrismaAppointmentRepository();
 
   if (uuid.validate(id_user)) {
@@ -163,10 +165,7 @@ export async function findAll(req: Request, res: Response) {
   let { startDate, endDate } = req.body;
   const appointmentRepository = new PrismaAppointmentRepository();
 
-  if (
-    isValidDate(startDate) &&
-    isValidDate(endDate)
-  ) {
+  if (isValidDate(startDate) && isValidDate(endDate)) {
     try {
       startDate = dateHourToDate(startDate, '00:00');
       endDate = dateHourToDate(endDate, '00:00');
