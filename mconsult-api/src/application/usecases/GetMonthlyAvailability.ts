@@ -1,3 +1,4 @@
+import { Appointment } from '../../domain/enitites/Appointment';
 import { IAppointmentRepository } from '../../domain/repositories/IAppointmentRepository';
 import {
   eachDayOfInterval,
@@ -27,10 +28,6 @@ export class GetMonthlyAvailability {
       monthEnd,
     );
 
-    if (appointments == null) {
-      return null;
-    }
-
     const availability: Record<string, string[]> = {};
 
     for (const day of daysInMonth) {
@@ -49,9 +46,9 @@ export class GetMonthlyAvailability {
       ];
 
       const dayKey = format(day, 'yyyy-MM-dd');
-      const dailyAppointments = appointments.filter(
+      const dailyAppointments: Appointment[] | null = appointments != null ? appointments.filter(
         (appt) => format(appt.booking_date, 'yyyy-MM-dd') === dayKey,
-      );
+      ): null;
 
       const availableTimes: string[] = [];
 
@@ -61,9 +58,9 @@ export class GetMonthlyAvailability {
 
         while (isBefore(startTime, endTime)) {
           const nextSlot = addMinutes(startTime, serviceDuration);
-          const isOccupied = dailyAppointments.some(
+          const isOccupied = dailyAppointments?dailyAppointments.some(
             (appt) => startTime.getTime() === appt.booking_date.getTime()
-          );
+          ): false;
 
           if (!isOccupied) {
             availableTimes.push(format(startTime, "HH:mm"));
