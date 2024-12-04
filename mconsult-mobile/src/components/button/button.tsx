@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Text, TouchableOpacity } from "react-native";
+import {Text, TouchableOpacity } from "react-native";
 import styles from './button.style'
 
-const button = function(props: { text: string; outline: boolean, theme: string }): React.JSX.Element{
+const button = function(props: { text: string; outline: boolean, theme: string, onPress: any }): React.JSX.Element{
     const stylesBackgroundList = []
     const stylesTextList = []
     stylesBackgroundList.push(styles.btn)
@@ -26,7 +26,7 @@ const button = function(props: { text: string; outline: boolean, theme: string }
         }
 
     }
-    return <TouchableOpacity style={stylesBackgroundList}>
+    return <TouchableOpacity style={stylesBackgroundList} onPress={props.onPress}>
         <Text style={stylesTextList}>
             {props.text}
         </Text>
