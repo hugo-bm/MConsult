@@ -1,7 +1,8 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./appointmentListItem.style";
 import { clock, calendar } from "../../utils/constants/icons";
 import Button from "../button/button";
+
 
 const AppointmentListItem = (props: {
   doctor: string;
@@ -9,7 +10,12 @@ const AppointmentListItem = (props: {
   hour: string;
   service: string;
   specialty: string;
+  id_appointment: number;
+  action: any;
 }) => {
+  const [year, month, day] = props.date.split("-");
+  const  formatedDate =  `${day}/${month}/${year}`;
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -21,7 +27,9 @@ const AppointmentListItem = (props: {
         <View style={styles.appointmentInfoContainer}>
           <View style={styles.dateTimeContainer}>
             <Image style={styles.icon} source={calendar} />
-            <Text style={styles.dateTime}>{props.date}</Text>
+            <Text style={styles.dateTime}>
+              {formatedDate}
+            </Text>
           </View>
           <View style={styles.dateTimeContainer}>
             <Image style={styles.icon} source={clock} />
@@ -29,7 +37,14 @@ const AppointmentListItem = (props: {
           </View>
         </View>
         <View style={styles.actionContainer}>
-          <Button text="Cancelar Reserva" outline={true} theme="danger"/>
+          <Button
+            text="Cancelar Reserva"
+            outline={true}
+            theme="danger"
+            onPress={() =>
+              props.action(props.id_appointment, props.doctor, props.service)
+            }
+          />
         </View>
       </View>
     </View>
