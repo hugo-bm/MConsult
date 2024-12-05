@@ -23,6 +23,13 @@ const styles = StyleSheet.create({
     specialty: {
         color: COLORS.gray4,
         fontSize: FONT_SIZE.sm, 
+    },
+    errMsg: {
+        color: COLORS.gray3,
+        fontSize: FONT_SIZE.md,
+        alignSelf: "center",
+        justifyContent: "center",
+        marginTop: 15
     }
 });
 
