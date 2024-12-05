@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 15,
         marginLeft: 10
+    },
+    errorMsg: {
+        marginTop: 25,
+        color: COLORS.secondary,
+        fontSize: FONT_SIZE.lg,
+        alignSelf: "center"
     }
 });
 
