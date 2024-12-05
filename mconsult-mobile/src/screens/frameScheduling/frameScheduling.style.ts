@@ -35,9 +35,8 @@ const theme = {
   selectedDayBackgroundColor: COLORS.primary,
   selectedDayTextColor: COLORS.light,
   arrowColor: COLORS.primary,
-  monthTextColor: COLORS.primary,
+  monthTextColor: COLORS.dark,
   textMonthFontWeight: "bold",
 };
 
-export default styles;
 export { styles, theme };
