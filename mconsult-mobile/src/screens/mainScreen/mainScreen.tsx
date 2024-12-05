@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FrameHome from "../frameHome/frameHome";
 import FrameProfile from "../frameProfile/frameProfile";
@@ -10,7 +9,6 @@ import { COLORS } from "../../utils/constants/theme";
 const Tab = createBottomTabNavigator();
 const Main = () => {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {
@@ -53,6 +51,7 @@ const Main = () => {
           name="Consultas"
           component={FrameConsult}
           options={{
+            unmountOnBlur: true,
             headerTitleAlign: "center",
             headerTitle: function () {
               return <Image source={logo} />;
@@ -98,7 +97,6 @@ const Main = () => {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 export default Main;
