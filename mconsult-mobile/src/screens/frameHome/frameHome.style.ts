@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE.md,
         marginBottom: 15,
         marginLeft: 10
+    },
+    errMsg: {
+        color: COLORS.gray3,
+        fontSize: FONT_SIZE.md,
+        marginBottom: 15,
+        marginLeft: 10
     }
 });
 
